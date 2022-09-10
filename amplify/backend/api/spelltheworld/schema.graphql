@@ -1,0 +1,31 @@
+# This "input" configures a global authorization rule to enable public access to
+# all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
+input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
+
+type WordListItem @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  word: String
+  wordlistID: ID! @index(name: "byWordList")
+}
+
+type WordList @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  seq: Int
+  WordListItems: [WordListItem] @hasMany(indexName: "byWordList", fields: ["id"])
+  gradeID: ID! @index(name: "byGrade")
+}
+
+type Grade @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  level: Int
+  name: String
+  WordLists: [WordList] @hasMany(indexName: "byGrade", fields: ["id"])
+  schoolID: ID! @index(name: "bySchool")
+}
+
+type School @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  Grades: [Grade] @hasMany(indexName: "bySchool", fields: ["id"])
+}

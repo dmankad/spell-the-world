@@ -1,23 +1,19 @@
-import logo from "./logo.svg";
+import { withAuthenticator } from '@aws-amplify/ui-react';
 import "@aws-amplify/ui-react/styles.css";
-import {
-  withAuthenticator,
-  Button,
-  Heading,
-  Image,
-  View,
-  Card,
-} from "@aws-amplify/ui-react";
+import { API } from 'aws-amplify';
+import React, { useEffect, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { Outlet, Link } from "react-router-dom";
+import './App.css';
 
-function App({ signOut }) {
+
+function App({ signOut, user }) {
   return (
-    <View className="App">
-      <Card>
-        <Image src={logo} className="App-logo" alt="logo" />
-        <Heading level={1}>We now have Auth!</Heading>
-      </Card>
-      <Button onClick={signOut}>Sign Out</Button>
-    </View>
+    <div>
+      <h1>Spell the world!</h1>
+      <h2>Email:</h2><p>{user.attributes.email}</p>
+      <button onClick={signOut}>Signout</button>
+    </div>
   );
 }
 
