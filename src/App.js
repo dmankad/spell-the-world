@@ -10,8 +10,6 @@ import { listSchools } from './graphql/queries';
 import { listGrades } from './graphql/queries';
 import SchoolPicker from './components/SchoolPicker'
 
-
-
 function App({ signOut, user }) {
   return (
     <div>
