@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { createWordList as createWordListMutation, deleteWordList as deleteWordListMutation } from '../graphql/mutations';
 import { Link } from 'react-router-dom';
 import { listWordLists } from '../graphql/queries';
+import WLGame from './WLGame';
 
 export default function WLPicker(props) {
 
@@ -13,6 +14,7 @@ export default function WLPicker(props) {
 
   useEffect(() => {
     console.log("Mounting WL Picker");
+    setSelWordList("X");
     fetchWordLists();
   }, [props.selGrade]);
 
@@ -35,6 +37,7 @@ export default function WLPicker(props) {
           <Button onClick={() => {selectWordList(WordList.id)}}>{WordList.name}</Button>
         ))
     }
+    <WLGame selWL={selWordList} />
     </div>
   )
 }
