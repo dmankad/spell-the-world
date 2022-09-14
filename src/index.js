@@ -9,6 +9,7 @@ import config from './aws-exports';
 import { BrowserRouter } from 'react-router-dom'
 
 Amplify.configure(config);
+
 const container = document.getElementById('root');
 const root = createRoot(container);
 root.render (
