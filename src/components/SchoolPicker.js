@@ -11,9 +11,11 @@ export default function SchoolPicker(props) {
 
   const [Schools, setSchools] = useState([]);
   const [selSchool, setSelSchool] = useState([]);
+  const [gameState, setGameState] = useState([]);
 
   useEffect(() => {
     console.log("Mounting School Picker");
+    setGameState("MENU");
     fetchSchools();
   }, []);
 
@@ -28,17 +30,20 @@ export default function SchoolPicker(props) {
   }
 
   function gradeCallback(event, data) {
-    if(event==="Loaded") {
-      //document.getElementById("schoolPickerContainer").style.display="none";
+    if(event==="GameOn") {
+      setGameState("ON");
+    }
+    if(event=="GameOver") {
+      setGameState("MENU");
     }
   }
 
   return(
     <>
-    <div className="container" id="schoolPickerContainer">
+    <div className="menu-container" id="schoolPickerContainer">
     {
       Schools.map(School => (
-        <Button onClick={() => {selectSchool(School.id)}}>{School.name}</Button>
+        <Button className={gameState=="ON"?"hidden":""} onClick={() => {selectSchool(School.id)}}>{School.name}</Button>
       ))
     }
     </div>

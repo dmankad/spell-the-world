@@ -13,8 +13,11 @@ import SchoolPicker from './components/SchoolPicker'
 function App({ signOut, user }) {
   return (
     <div>
-      <Button onClick={signOut}>Sign out</Button>
-      <SchoolPicker user={user.username}/>
+      <h1>Spell the world!</h1>
+      <div>
+        <button className="tinyboy" onClick={signOut}>Sign out</button>
+        <SchoolPicker user={user.username}/>
+      </div>
     </div>
   );
 }

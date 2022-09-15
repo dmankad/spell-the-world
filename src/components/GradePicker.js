@@ -11,9 +11,11 @@ export default function GradePicker(props) {
 
   const [Grades, setGrades] = useState([]);
   const [selGrade, setSelGrade] = useState([]);
+  const [gameState, setGameState] = useState([]);
 
   useEffect(() => {
     console.log("Mounting Grade Picker");
+    setGameState("MENU");
     setSelGrade("X");
     fetchGrades();
   }, [props.selSchool]);
@@ -37,14 +39,22 @@ export default function GradePicker(props) {
   }
 
   function wlCallback(event, data) {
+    if(event==="GameOn") {
+      setGameState("ON");
+      props.callback("GameOn");
+    }
+    if(event=="GameOver") {
+      setGameState("MENU");
+      props.callback("GameOver");
+    }
     console.log("Child called their Parent! " + event);
   }
 
   return(
-    <div className="container">
+    <div className="menu-container">
     {
         Grades.map(Grade => (
-          <Button onClick={() => {selectGrade(Grade.id)}}>{Grade.name}</Button>
+          <Button className={gameState=="ON"?"hidden":""} onClick={() => {selectGrade(Grade.id)}}>{Grade.name}</Button>
         ))
     }
     <WLPicker selGrade={selGrade} callback={wlCallback} />
