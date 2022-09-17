@@ -4,9 +4,11 @@ import { schema } from './schema';
 
 
 
-const { WordListItem, WordList, Grade, School } = initSchema(schema);
+const { Guess, Attempt, WordListItem, WordList, Grade, School } = initSchema(schema);
 
 export {
+  Guess,
+  Attempt,
   WordListItem,
   WordList,
   Grade,

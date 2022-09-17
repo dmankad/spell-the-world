@@ -57,7 +57,7 @@ export default function GradePicker(props) {
           <Button className={gameState=="ON"?"hidden":""} onClick={() => {selectGrade(Grade.id)}}>{Grade.name}</Button>
         ))
     }
-    <WLPicker selGrade={selGrade} callback={wlCallback} />
+    <WLPicker selGrade={selGrade} callback={wlCallback} user={props.user} />
 
     </div>
   )

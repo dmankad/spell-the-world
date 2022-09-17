@@ -1,6 +1,165 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const createGuess = /* GraphQL */ `
+  mutation CreateGuess(
+    $input: CreateGuessInput!
+    $condition: ModelGuessConditionInput
+  ) {
+    createGuess(input: $input, condition: $condition) {
+      id
+      attemptID
+      dateGuessed
+      word
+      guess
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const updateGuess = /* GraphQL */ `
+  mutation UpdateGuess(
+    $input: UpdateGuessInput!
+    $condition: ModelGuessConditionInput
+  ) {
+    updateGuess(input: $input, condition: $condition) {
+      id
+      attemptID
+      dateGuessed
+      word
+      guess
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const deleteGuess = /* GraphQL */ `
+  mutation DeleteGuess(
+    $input: DeleteGuessInput!
+    $condition: ModelGuessConditionInput
+  ) {
+    deleteGuess(input: $input, condition: $condition) {
+      id
+      attemptID
+      dateGuessed
+      word
+      guess
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const createAttempt = /* GraphQL */ `
+  mutation CreateAttempt(
+    $input: CreateAttemptInput!
+    $condition: ModelAttemptConditionInput
+  ) {
+    createAttempt(input: $input, condition: $condition) {
+      id
+      user
+      dateStarted
+      wordlistitemID
+      Guesses {
+        items {
+          id
+          attemptID
+          dateGuessed
+          word
+          guess
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const updateAttempt = /* GraphQL */ `
+  mutation UpdateAttempt(
+    $input: UpdateAttemptInput!
+    $condition: ModelAttemptConditionInput
+  ) {
+    updateAttempt(input: $input, condition: $condition) {
+      id
+      user
+      dateStarted
+      wordlistitemID
+      Guesses {
+        items {
+          id
+          attemptID
+          dateGuessed
+          word
+          guess
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const deleteAttempt = /* GraphQL */ `
+  mutation DeleteAttempt(
+    $input: DeleteAttemptInput!
+    $condition: ModelAttemptConditionInput
+  ) {
+    deleteAttempt(input: $input, condition: $condition) {
+      id
+      user
+      dateStarted
+      wordlistitemID
+      Guesses {
+        items {
+          id
+          attemptID
+          dateGuessed
+          word
+          guess
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
 export const createWordListItem = /* GraphQL */ `
   mutation CreateWordListItem(
     $input: CreateWordListItemInput!
@@ -10,6 +169,21 @@ export const createWordListItem = /* GraphQL */ `
       id
       word
       wordlistID
+      Attempts {
+        items {
+          id
+          user
+          dateStarted
+          wordlistitemID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -27,6 +201,21 @@ export const updateWordListItem = /* GraphQL */ `
       id
       word
       wordlistID
+      Attempts {
+        items {
+          id
+          user
+          dateStarted
+          wordlistitemID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -44,6 +233,21 @@ export const deleteWordListItem = /* GraphQL */ `
       id
       word
       wordlistID
+      Attempts {
+        items {
+          id
+          user
+          dateStarted
+          wordlistitemID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version

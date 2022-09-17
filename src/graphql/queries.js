@@ -1,12 +1,188 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const getGuess = /* GraphQL */ `
+  query GetGuess($id: ID!) {
+    getGuess(id: $id) {
+      id
+      attemptID
+      dateGuessed
+      word
+      guess
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const listGuesses = /* GraphQL */ `
+  query ListGuesses(
+    $filter: ModelGuessFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listGuesses(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        attemptID
+        dateGuessed
+        word
+        guess
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncGuesses = /* GraphQL */ `
+  query SyncGuesses(
+    $filter: ModelGuessFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncGuesses(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        attemptID
+        dateGuessed
+        word
+        guess
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const getAttempt = /* GraphQL */ `
+  query GetAttempt($id: ID!) {
+    getAttempt(id: $id) {
+      id
+      user
+      dateStarted
+      wordlistitemID
+      Guesses {
+        items {
+          id
+          attemptID
+          dateGuessed
+          word
+          guess
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const listAttempts = /* GraphQL */ `
+  query ListAttempts(
+    $filter: ModelAttemptFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listAttempts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        user
+        dateStarted
+        wordlistitemID
+        Guesses {
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncAttempts = /* GraphQL */ `
+  query SyncAttempts(
+    $filter: ModelAttemptFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncAttempts(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        user
+        dateStarted
+        wordlistitemID
+        Guesses {
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
 export const getWordListItem = /* GraphQL */ `
   query GetWordListItem($id: ID!) {
     getWordListItem(id: $id) {
       id
       word
       wordlistID
+      Attempts {
+        items {
+          id
+          user
+          dateStarted
+          wordlistitemID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -26,6 +202,10 @@ export const listWordListItems = /* GraphQL */ `
         id
         word
         wordlistID
+        Attempts {
+          nextToken
+          startedAt
+        }
         createdAt
         updatedAt
         _version
@@ -54,6 +234,10 @@ export const syncWordListItems = /* GraphQL */ `
         id
         word
         wordlistID
+        Attempts {
+          nextToken
+          startedAt
+        }
         createdAt
         updatedAt
         _version

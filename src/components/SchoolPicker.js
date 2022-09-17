@@ -47,7 +47,7 @@ export default function SchoolPicker(props) {
       ))
     }
     </div>
-    <GradePicker selSchool={selSchool} callback={gradeCallback} />
+    <GradePicker selSchool={selSchool} callback={gradeCallback} user={props.user} />
     </>
   )
 }

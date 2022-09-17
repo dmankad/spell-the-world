@@ -53,7 +53,7 @@ export default function WLPicker(props) {
           <Button className={gameState=="ON"?"hidden":""} onClick={() => {selectWordList(WordList.id, WordList.name)}}>{WordList.name}</Button>
         ))
     }
-    <WLGame selWL={selWordList} selWLName={selWordListN} callback={gameCallback} />
+    <WLGame selWL={selWordList} selWLName={selWordListN} callback={gameCallback} user={props.user} />
     </div>
   )
 }

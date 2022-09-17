@@ -16,7 +16,7 @@ function App({ signOut, user }) {
       <h1>Spell the world!</h1>
       <div>
         <button className="tinyboy" onClick={signOut}>Sign out</button>
-        <SchoolPicker user={user.username}/>
+        <SchoolPicker user={user.email}/>
       </div>
     </div>
   );

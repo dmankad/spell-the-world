@@ -1,5 +1,13 @@
 import { ModelInit, MutableModel } from "@aws-amplify/datastore";
 
+type GuessMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
+type AttemptMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
 type WordListItemMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
@@ -16,10 +24,35 @@ type SchoolMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
+export declare class Guess {
+  readonly id: string;
+  readonly attemptID: string;
+  readonly dateGuessed?: string | null;
+  readonly word?: string | null;
+  readonly guess?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  constructor(init: ModelInit<Guess, GuessMetaData>);
+  static copyOf(source: Guess, mutator: (draft: MutableModel<Guess, GuessMetaData>) => MutableModel<Guess, GuessMetaData> | void): Guess;
+}
+
+export declare class Attempt {
+  readonly id: string;
+  readonly user?: string | null;
+  readonly dateStarted?: string | null;
+  readonly wordlistitemID: string;
+  readonly Guesses?: (Guess | null)[] | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  constructor(init: ModelInit<Attempt, AttemptMetaData>);
+  static copyOf(source: Attempt, mutator: (draft: MutableModel<Attempt, AttemptMetaData>) => MutableModel<Attempt, AttemptMetaData> | void): Attempt;
+}
+
 export declare class WordListItem {
   readonly id: string;
   readonly word?: string | null;
   readonly wordlistID: string;
+  readonly Attempts?: (Attempt | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<WordListItem, WordListItemMetaData>);

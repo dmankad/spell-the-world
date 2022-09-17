@@ -1,12 +1,168 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const onCreateGuess = /* GraphQL */ `
+  subscription OnCreateGuess {
+    onCreateGuess {
+      id
+      attemptID
+      dateGuessed
+      word
+      guess
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onUpdateGuess = /* GraphQL */ `
+  subscription OnUpdateGuess {
+    onUpdateGuess {
+      id
+      attemptID
+      dateGuessed
+      word
+      guess
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onDeleteGuess = /* GraphQL */ `
+  subscription OnDeleteGuess {
+    onDeleteGuess {
+      id
+      attemptID
+      dateGuessed
+      word
+      guess
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onCreateAttempt = /* GraphQL */ `
+  subscription OnCreateAttempt {
+    onCreateAttempt {
+      id
+      user
+      dateStarted
+      wordlistitemID
+      Guesses {
+        items {
+          id
+          attemptID
+          dateGuessed
+          word
+          guess
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onUpdateAttempt = /* GraphQL */ `
+  subscription OnUpdateAttempt {
+    onUpdateAttempt {
+      id
+      user
+      dateStarted
+      wordlistitemID
+      Guesses {
+        items {
+          id
+          attemptID
+          dateGuessed
+          word
+          guess
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onDeleteAttempt = /* GraphQL */ `
+  subscription OnDeleteAttempt {
+    onDeleteAttempt {
+      id
+      user
+      dateStarted
+      wordlistitemID
+      Guesses {
+        items {
+          id
+          attemptID
+          dateGuessed
+          word
+          guess
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
 export const onCreateWordListItem = /* GraphQL */ `
   subscription OnCreateWordListItem {
     onCreateWordListItem {
       id
       word
       wordlistID
+      Attempts {
+        items {
+          id
+          user
+          dateStarted
+          wordlistitemID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -21,6 +177,21 @@ export const onUpdateWordListItem = /* GraphQL */ `
       id
       word
       wordlistID
+      Attempts {
+        items {
+          id
+          user
+          dateStarted
+          wordlistitemID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -35,6 +206,21 @@ export const onDeleteWordListItem = /* GraphQL */ `
       id
       word
       wordlistID
+      Attempts {
+        items {
+          id
+          user
+          dateStarted
+          wordlistitemID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version

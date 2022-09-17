@@ -1,13 +1,14 @@
 import { Button, TextField, Text } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
-import { API } from 'aws-amplify';
 import React, { useEffect, useState } from 'react';
+import { Amplify, API, graphqlOperation } from 'aws-amplify'
 import { createWordListItem as createWordListItemMutation, deleteWordListItem as deleteWordListItemMutation } from '../graphql/mutations';
 import { Link } from 'react-router-dom';
 import { listWordListItems } from '../graphql/queries';
 import Keyboard from 'react-simple-keyboard';
 import 'react-simple-keyboard/build/css/index.css';
 import ReactAudioPlayer from 'react-audio-player';
+import { createGuess, createAttempt } from '../graphql/mutations'
 
 export default function WLGame(props) {
 
@@ -18,14 +19,22 @@ export default function WLGame(props) {
   const [voiceUrl, setVoiceUrl] = useState([]);
   const [keyboard, setKeyboard] = useState([]);
   const [audioPlayer, setAudioPlayer] = useState([]);
+  const [keyPlayer, setKeyPlayer] = useState([]);
   const [lastLetter, setLastLetter] = useState([]);
   const [letterUrl, setLetterUrl] = useState([]);
   const [lastPressedTime, setLastPressedTime] = useState([]);
   const [gameState, setGameState] = useState([]);
+  const [wrongs, setWrongs] = useState([]);
+  const [currentAttemptId, setCurrentAttemptId] = useState([]);
+
+  const delay = ms => new Promise(
+    resolve => setTimeout(resolve, ms)
+  );
 
   useEffect(() => {
     fetchWordListItems();
     console.log("Fetching...")
+    setWrongs(0);
     if(props.selWL != "X") {
       props.callback("GameOn");
       setGameState("ON");
@@ -38,6 +47,7 @@ export default function WLGame(props) {
 
   useEffect(() => {
       setCurrentWordIndex(0);
+      setCurrentAttemptId("X");
       setCurrentWord(WordListItems[currentWordIndex]);
   }, [WordListItems])
 
@@ -47,16 +57,62 @@ export default function WLGame(props) {
 
   useEffect(()=> {
     if(currentWord) {
-      setVoiceUrl("https://spelltheworld1b170859-staging.s3.us-west-2.amazonaws.com/"+currentWord.id+".mp3")
+      setVoiceUrl("https://spelltheworld1b170859-staging.s3.us-west-2.amazonaws.com/"+currentWord.id+".mp3");
     }
   }, [currentWord])
 
   useEffect(()=> {
-    if(lastLetter) {
-      setLetterUrl("https://spelltheworld1b170859-staging.s3.us-west-2.amazonaws.com/"+lastLetter+".mp3?"+(Date.now()))
+    console.log("Pressed a letter. " + lastLetter)
+    if(lastLetter && keyPlayer.audioEl && keyPlayer.audioEl.current) {
+      var newUrl = "https://spelltheworld1b170859-staging.s3.us-west-2.amazonaws.com/"+lastLetter+".mp3";
+      if(keyPlayer.audioEl.current.src == newUrl) {
+        keyPlayer.audioEl.current.play()
+      }
+      else {
+        setLetterUrl(newUrl)
+      }
     }
   }, [lastPressedTime])
 
+
+  async function recAttempt() {
+    try {
+      const newAttempt = await API.graphql(graphqlOperation(createAttempt, {
+        input: {
+          'user':props.user,
+          'dateStarted':new Date(),
+          'wordlistitemID':currentWord.id
+        } }))
+      setCurrentAttemptId(newAttempt.data.createAttempt.id);
+      console.log("Current Attempt: " + currentAttemptId)
+      return currentAttemptId;
+    } catch (err) {
+      console.log('error creating Attempt:', err)
+    }
+  }
+  async function recGuess() {
+    console.log("Guess AttemptId "+ currentAttemptId);
+    if(currentAttemptId=="X") {
+      await recAttempt();
+      await recGuessWork()
+    }
+    else {
+      await recGuessWork();
+    }
+  }
+  async function recGuessWork() {
+    try {
+      const newGuess = await API.graphql(graphqlOperation(createGuess, {
+        input: {
+          'attemptID':currentAttemptId,
+          'dateGuessed':new Date(),
+          'word':currentWord.word.toUpperCase(),
+          'guess':currentGuess.toUpperCase()
+        } }))
+    } catch (err) {
+      console.log('error creating Guess:', err)
+    }
+  }
 
   async function fetchWordListItems() {
     if(props.selWL) {
@@ -73,20 +129,59 @@ export default function WLGame(props) {
 
   function resetGame() {
     setCurrentGuess("");
+    keyboard.clearInput();
     setGameState("MENU");
     props.callback("GameOver");
   }
 
   function playword() {
-      setVoiceUrl("https://spelltheworld1b170859-staging.s3.us-west-2.amazonaws.com/"+currentWord.id+".mp3?"+(Date.now()))
+      var newUrl = "https://spelltheworld1b170859-staging.s3.us-west-2.amazonaws.com/"+currentWord.id+".mp3";
+      if(audioPlayer.audioEl.current.src == newUrl) {
+        audioPlayer.audioEl.current.play()
+      }
+      else {
+        setVoiceUrl(newUrl)
+      }
+  }
+
+  function playletter(letter) {
+    var newUrl = "https://spelltheworld1b170859-staging.s3.us-west-2.amazonaws.com/"+letter+".mp3";
+    if(keyPlayer.audioEl.current.src == newUrl) {
+      keyPlayer.audioEl.current.play()
+    }
+    else {
+      keyPlayer.audioEl.current.src = newUrl
+      keyPlayer.audioEl.current.play()
+    }
+  }
+
+  async function spellword() {
+      playword();
+      await delay(1000);
+      var chars=currentWord.word.split('');
+      console.log(chars);
+      for(var i=0; i<chars.length; i++) {
+        await delay(700);
+        playletter(chars[i]);
+      }
   }
 
   function submitGuess() {
     console.log("CurrentGuess="+currentGuess);
     console.log("CurrentWord="+currentWord.word);
+
+    recGuess();
     if(currentGuess.toUpperCase() == currentWord.word.toUpperCase()) {
       console.log("Got it!");
-      setLetterUrl("https://spelltheworld1b170859-staging.s3.us-west-2.amazonaws.com/right.mp3?"+(Date.now()))
+      setWrongs(0);
+      setCurrentAttemptId("X");
+      var newUrl = "https://spelltheworld1b170859-staging.s3.us-west-2.amazonaws.com/right.mp3";
+      if(keyPlayer.audioEl.current.src == newUrl) {
+        keyPlayer.audioEl.current.play()
+      }
+      else {
+        setLetterUrl(newUrl)
+      }
       if(WordListItems.length <= (currentWordIndex+1)) {
         resetGame();
       }
@@ -97,7 +192,14 @@ export default function WLGame(props) {
       }
     }
     else {
-      setLetterUrl("https://spelltheworld1b170859-staging.s3.us-west-2.amazonaws.com/wrong.mp3?"+(Date.now()))
+      var newUrl = "https://spelltheworld1b170859-staging.s3.us-west-2.amazonaws.com/wrong.mp3";
+      setWrongs(wrongs+1);
+      if(keyPlayer.audioEl.current.src == newUrl) {
+        keyPlayer.audioEl.current.play()
+      }
+      else {
+        setLetterUrl(newUrl)
+      }
     }
   }
 
@@ -124,6 +226,7 @@ export default function WLGame(props) {
 
 
     <button onClick={playword}>Play Word</button>
+    <button onClick={spellword} className={wrongs>=3?"":"hidden"}>Spell Word</button>
 
     <div class="spacer">&nbsp;</div>
     <span class="score">Word List: ({props.selWLName})</span>
@@ -138,6 +241,7 @@ export default function WLGame(props) {
       src={letterUrl}
       autoPlay={true}
       controls={false}
+      ref={(element) => { setKeyPlayer(element) }}
     />
     <Text
       id="currentWordEntry"
