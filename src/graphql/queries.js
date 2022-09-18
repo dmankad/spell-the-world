@@ -9,6 +9,7 @@ export const getGuess = /* GraphQL */ `
       dateGuessed
       word
       guess
+      user
       createdAt
       updatedAt
       _version
@@ -30,6 +31,7 @@ export const listGuesses = /* GraphQL */ `
         dateGuessed
         word
         guess
+        user
         createdAt
         updatedAt
         _version
@@ -60,6 +62,7 @@ export const syncGuesses = /* GraphQL */ `
         dateGuessed
         word
         guess
+        user
         createdAt
         updatedAt
         _version
@@ -85,6 +88,7 @@ export const getAttempt = /* GraphQL */ `
           dateGuessed
           word
           guess
+          user
           createdAt
           updatedAt
           _version

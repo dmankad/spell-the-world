@@ -8,6 +8,7 @@ import Amplify from 'aws-amplify';
 import config from './aws-exports';
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import Loader from './routes/loader'
+import Watcher from './routes/watcher'
 
 Amplify.configure(config);
 
@@ -18,6 +19,7 @@ root.render (
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="loader" element={<Loader />} />
+      <Route path="watcher" element={<Watcher />} />
     </Routes>
   </BrowserRouter>
 );

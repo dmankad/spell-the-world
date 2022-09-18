@@ -26,6 +26,7 @@ export default function WLGame(props) {
   const [gameState, setGameState] = useState([]);
   const [wrongs, setWrongs] = useState([]);
   const [currentAttemptId, setCurrentAttemptId] = useState([]);
+  const [currentDefinition, setCurrentDefinition] = useState([]);
 
   const delay = ms => new Promise(
     resolve => setTimeout(resolve, ms)
@@ -58,6 +59,7 @@ export default function WLGame(props) {
   useEffect(()=> {
     if(currentWord) {
       setVoiceUrl("https://spelltheworld1b170859-staging.s3.us-west-2.amazonaws.com/"+currentWord.id+".mp3");
+      updateDef();
     }
   }, [currentWord])
 
@@ -74,6 +76,11 @@ export default function WLGame(props) {
     }
   }, [lastPressedTime])
 
+  async function updateDef() {
+    fetch('https://api.dictionaryapi.dev/api/v2/entries/en/'+currentWord.word)
+      .then((response) => response.json())
+      .then((data) => setCurrentDefinition(data[0].meanings[0].definitions[0].definition));
+  }
 
   async function recAttempt() {
     try {
@@ -107,6 +114,7 @@ export default function WLGame(props) {
           'attemptID':currentAttemptId,
           'dateGuessed':new Date(),
           'word':currentWord.word.toUpperCase(),
+          'user':props.user,
           'guess':currentGuess.toUpperCase()
         } }))
     } catch (err) {
@@ -161,7 +169,7 @@ export default function WLGame(props) {
       var chars=currentWord.word.split('');
       console.log(chars);
       for(var i=0; i<chars.length; i++) {
-        await delay(700);
+        await delay(1200);
         playletter(chars[i]);
       }
   }
@@ -267,6 +275,14 @@ export default function WLGame(props) {
             }}
           />
       </div>
+      <Text
+        id="currentDefinition"
+        className="definition"
+      >Definition: {currentDefinition}</Text>
+      <Text
+        id="currentDefinition"
+        className="definition"
+      >Definition: {props.user}</Text>
     </div>
 
 

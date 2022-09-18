@@ -9,6 +9,7 @@ export const onCreateGuess = /* GraphQL */ `
       dateGuessed
       word
       guess
+      user
       createdAt
       updatedAt
       _version
@@ -25,6 +26,7 @@ export const onUpdateGuess = /* GraphQL */ `
       dateGuessed
       word
       guess
+      user
       createdAt
       updatedAt
       _version
@@ -41,6 +43,7 @@ export const onDeleteGuess = /* GraphQL */ `
       dateGuessed
       word
       guess
+      user
       createdAt
       updatedAt
       _version
@@ -63,6 +66,7 @@ export const onCreateAttempt = /* GraphQL */ `
           dateGuessed
           word
           guess
+          user
           createdAt
           updatedAt
           _version
@@ -94,6 +98,7 @@ export const onUpdateAttempt = /* GraphQL */ `
           dateGuessed
           word
           guess
+          user
           createdAt
           updatedAt
           _version
@@ -125,6 +130,7 @@ export const onDeleteAttempt = /* GraphQL */ `
           dateGuessed
           word
           guess
+          user
           createdAt
           updatedAt
           _version

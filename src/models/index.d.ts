@@ -30,6 +30,7 @@ export declare class Guess {
   readonly dateGuessed?: string | null;
   readonly word?: string | null;
   readonly guess?: string | null;
+  readonly user?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<Guess, GuessMetaData>);

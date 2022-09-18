@@ -4,6 +4,7 @@ type Guess @model @auth(rules: [{allow: public}]) {
   dateGuessed: AWSDateTime
   word: String
   guess: String
+  user: AWSEmail
 }
 
 type Attempt @model @auth(rules: [{allow: public}]) {
