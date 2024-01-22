@@ -23,6 +23,6 @@ export default function HomePage() {
         <Link to={`/grade/${School.id}`}> {School.name} </Link>
       ))
     }
-    </div>
+    </div> 
   )
 }

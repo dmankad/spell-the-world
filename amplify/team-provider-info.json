@@ -14,6 +14,12 @@
     "categories": {
       "auth": {
         "spelltheworld4a2fd9f0": {}
+      },
+      "api": {
+        "spelltheworld": {}
+      },
+      "storage": {
+        "spelltheworld1": {}
       }
     }
   }

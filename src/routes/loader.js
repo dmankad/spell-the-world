@@ -18,7 +18,6 @@ async function loadFunc() {
     "meat",
     "might",
     "night",
-    "right",
     "talks",
     "than",
     "tight",

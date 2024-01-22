@@ -2,8 +2,8 @@
 // this is an auto generated file. This will be overwritten
 
 export const onCreateGuess = /* GraphQL */ `
-  subscription OnCreateGuess {
-    onCreateGuess {
+  subscription OnCreateGuess($filter: ModelSubscriptionGuessFilterInput) {
+    onCreateGuess(filter: $filter) {
       id
       attemptID
       dateGuessed
@@ -15,12 +15,13 @@ export const onCreateGuess = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
 export const onUpdateGuess = /* GraphQL */ `
-  subscription OnUpdateGuess {
-    onUpdateGuess {
+  subscription OnUpdateGuess($filter: ModelSubscriptionGuessFilterInput) {
+    onUpdateGuess(filter: $filter) {
       id
       attemptID
       dateGuessed
@@ -32,12 +33,13 @@ export const onUpdateGuess = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
 export const onDeleteGuess = /* GraphQL */ `
-  subscription OnDeleteGuess {
-    onDeleteGuess {
+  subscription OnDeleteGuess($filter: ModelSubscriptionGuessFilterInput) {
+    onDeleteGuess(filter: $filter) {
       id
       attemptID
       dateGuessed
@@ -49,211 +51,149 @@ export const onDeleteGuess = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
 export const onCreateAttempt = /* GraphQL */ `
-  subscription OnCreateAttempt {
-    onCreateAttempt {
+  subscription OnCreateAttempt($filter: ModelSubscriptionAttemptFilterInput) {
+    onCreateAttempt(filter: $filter) {
       id
       user
       dateStarted
       wordlistitemID
       Guesses {
-        items {
-          id
-          attemptID
-          dateGuessed
-          word
-          guess
-          user
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
+        __typename
       }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
 export const onUpdateAttempt = /* GraphQL */ `
-  subscription OnUpdateAttempt {
-    onUpdateAttempt {
+  subscription OnUpdateAttempt($filter: ModelSubscriptionAttemptFilterInput) {
+    onUpdateAttempt(filter: $filter) {
       id
       user
       dateStarted
       wordlistitemID
       Guesses {
-        items {
-          id
-          attemptID
-          dateGuessed
-          word
-          guess
-          user
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
+        __typename
       }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
 export const onDeleteAttempt = /* GraphQL */ `
-  subscription OnDeleteAttempt {
-    onDeleteAttempt {
+  subscription OnDeleteAttempt($filter: ModelSubscriptionAttemptFilterInput) {
+    onDeleteAttempt(filter: $filter) {
       id
       user
       dateStarted
       wordlistitemID
       Guesses {
-        items {
-          id
-          attemptID
-          dateGuessed
-          word
-          guess
-          user
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
+        __typename
       }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
 export const onCreateWordListItem = /* GraphQL */ `
-  subscription OnCreateWordListItem {
-    onCreateWordListItem {
+  subscription OnCreateWordListItem(
+    $filter: ModelSubscriptionWordListItemFilterInput
+  ) {
+    onCreateWordListItem(filter: $filter) {
       id
       word
       wordlistID
       Attempts {
-        items {
-          id
-          user
-          dateStarted
-          wordlistitemID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
+        __typename
       }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
 export const onUpdateWordListItem = /* GraphQL */ `
-  subscription OnUpdateWordListItem {
-    onUpdateWordListItem {
+  subscription OnUpdateWordListItem(
+    $filter: ModelSubscriptionWordListItemFilterInput
+  ) {
+    onUpdateWordListItem(filter: $filter) {
       id
       word
       wordlistID
       Attempts {
-        items {
-          id
-          user
-          dateStarted
-          wordlistitemID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
+        __typename
       }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
 export const onDeleteWordListItem = /* GraphQL */ `
-  subscription OnDeleteWordListItem {
-    onDeleteWordListItem {
+  subscription OnDeleteWordListItem(
+    $filter: ModelSubscriptionWordListItemFilterInput
+  ) {
+    onDeleteWordListItem(filter: $filter) {
       id
       word
       wordlistID
       Attempts {
-        items {
-          id
-          user
-          dateStarted
-          wordlistitemID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
+        __typename
       }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
 export const onCreateWordList = /* GraphQL */ `
-  subscription OnCreateWordList {
-    onCreateWordList {
+  subscription OnCreateWordList($filter: ModelSubscriptionWordListFilterInput) {
+    onCreateWordList(filter: $filter) {
       id
       name
       seq
       WordListItems {
-        items {
-          id
-          word
-          wordlistID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
+        __typename
       }
       gradeID
       createdAt
@@ -261,28 +201,20 @@ export const onCreateWordList = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
 export const onUpdateWordList = /* GraphQL */ `
-  subscription OnUpdateWordList {
-    onUpdateWordList {
+  subscription OnUpdateWordList($filter: ModelSubscriptionWordListFilterInput) {
+    onUpdateWordList(filter: $filter) {
       id
       name
       seq
       WordListItems {
-        items {
-          id
-          word
-          wordlistID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
+        __typename
       }
       gradeID
       createdAt
@@ -290,28 +222,20 @@ export const onUpdateWordList = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
 export const onDeleteWordList = /* GraphQL */ `
-  subscription OnDeleteWordList {
-    onDeleteWordList {
+  subscription OnDeleteWordList($filter: ModelSubscriptionWordListFilterInput) {
+    onDeleteWordList(filter: $filter) {
       id
       name
       seq
       WordListItems {
-        items {
-          id
-          word
-          wordlistID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
+        __typename
       }
       gradeID
       createdAt
@@ -319,29 +243,20 @@ export const onDeleteWordList = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
 export const onCreateGrade = /* GraphQL */ `
-  subscription OnCreateGrade {
-    onCreateGrade {
+  subscription OnCreateGrade($filter: ModelSubscriptionGradeFilterInput) {
+    onCreateGrade(filter: $filter) {
       id
       level
       name
       WordLists {
-        items {
-          id
-          name
-          seq
-          gradeID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
+        __typename
       }
       schoolID
       createdAt
@@ -349,29 +264,20 @@ export const onCreateGrade = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
 export const onUpdateGrade = /* GraphQL */ `
-  subscription OnUpdateGrade {
-    onUpdateGrade {
+  subscription OnUpdateGrade($filter: ModelSubscriptionGradeFilterInput) {
+    onUpdateGrade(filter: $filter) {
       id
       level
       name
       WordLists {
-        items {
-          id
-          name
-          seq
-          gradeID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
+        __typename
       }
       schoolID
       createdAt
@@ -379,29 +285,20 @@ export const onUpdateGrade = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
 export const onDeleteGrade = /* GraphQL */ `
-  subscription OnDeleteGrade {
-    onDeleteGrade {
+  subscription OnDeleteGrade($filter: ModelSubscriptionGradeFilterInput) {
+    onDeleteGrade(filter: $filter) {
       id
       level
       name
       WordLists {
-        items {
-          id
-          name
-          seq
-          gradeID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
+        __typename
       }
       schoolID
       createdAt
@@ -409,90 +306,64 @@ export const onDeleteGrade = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
 export const onCreateSchool = /* GraphQL */ `
-  subscription OnCreateSchool {
-    onCreateSchool {
+  subscription OnCreateSchool($filter: ModelSubscriptionSchoolFilterInput) {
+    onCreateSchool(filter: $filter) {
       id
       name
       Grades {
-        items {
-          id
-          level
-          name
-          schoolID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
+        __typename
       }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
 export const onUpdateSchool = /* GraphQL */ `
-  subscription OnUpdateSchool {
-    onUpdateSchool {
+  subscription OnUpdateSchool($filter: ModelSubscriptionSchoolFilterInput) {
+    onUpdateSchool(filter: $filter) {
       id
       name
       Grades {
-        items {
-          id
-          level
-          name
-          schoolID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
+        __typename
       }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
 export const onDeleteSchool = /* GraphQL */ `
-  subscription OnDeleteSchool {
-    onDeleteSchool {
+  subscription OnDeleteSchool($filter: ModelSubscriptionSchoolFilterInput) {
+    onDeleteSchool(filter: $filter) {
       id
       name
       Grades {
-        items {
-          id
-          level
-          name
-          schoolID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
+        __typename
       }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;

@@ -15,6 +15,7 @@ export const getGuess = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
@@ -37,9 +38,11 @@ export const listGuesses = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
+        __typename
       }
       nextToken
       startedAt
+      __typename
     }
   }
 `;
@@ -68,9 +71,11 @@ export const syncGuesses = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
+        __typename
       }
       nextToken
       startedAt
+      __typename
     }
   }
 `;
@@ -82,27 +87,16 @@ export const getAttempt = /* GraphQL */ `
       dateStarted
       wordlistitemID
       Guesses {
-        items {
-          id
-          attemptID
-          dateGuessed
-          word
-          guess
-          user
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
+        __typename
       }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
@@ -118,18 +112,16 @@ export const listAttempts = /* GraphQL */ `
         user
         dateStarted
         wordlistitemID
-        Guesses {
-          nextToken
-          startedAt
-        }
         createdAt
         updatedAt
         _version
         _deleted
         _lastChangedAt
+        __typename
       }
       nextToken
       startedAt
+      __typename
     }
   }
 `;
@@ -151,18 +143,16 @@ export const syncAttempts = /* GraphQL */ `
         user
         dateStarted
         wordlistitemID
-        Guesses {
-          nextToken
-          startedAt
-        }
         createdAt
         updatedAt
         _version
         _deleted
         _lastChangedAt
+        __typename
       }
       nextToken
       startedAt
+      __typename
     }
   }
 `;
@@ -173,25 +163,16 @@ export const getWordListItem = /* GraphQL */ `
       word
       wordlistID
       Attempts {
-        items {
-          id
-          user
-          dateStarted
-          wordlistitemID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
+        __typename
       }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
@@ -206,18 +187,16 @@ export const listWordListItems = /* GraphQL */ `
         id
         word
         wordlistID
-        Attempts {
-          nextToken
-          startedAt
-        }
         createdAt
         updatedAt
         _version
         _deleted
         _lastChangedAt
+        __typename
       }
       nextToken
       startedAt
+      __typename
     }
   }
 `;
@@ -238,18 +217,16 @@ export const syncWordListItems = /* GraphQL */ `
         id
         word
         wordlistID
-        Attempts {
-          nextToken
-          startedAt
-        }
         createdAt
         updatedAt
         _version
         _deleted
         _lastChangedAt
+        __typename
       }
       nextToken
       startedAt
+      __typename
     }
   }
 `;
@@ -260,18 +237,9 @@ export const getWordList = /* GraphQL */ `
       name
       seq
       WordListItems {
-        items {
-          id
-          word
-          wordlistID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
+        __typename
       }
       gradeID
       createdAt
@@ -279,6 +247,7 @@ export const getWordList = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
@@ -293,19 +262,17 @@ export const listWordLists = /* GraphQL */ `
         id
         name
         seq
-        WordListItems {
-          nextToken
-          startedAt
-        }
         gradeID
         createdAt
         updatedAt
         _version
         _deleted
         _lastChangedAt
+        __typename
       }
       nextToken
       startedAt
+      __typename
     }
   }
 `;
@@ -326,19 +293,17 @@ export const syncWordLists = /* GraphQL */ `
         id
         name
         seq
-        WordListItems {
-          nextToken
-          startedAt
-        }
         gradeID
         createdAt
         updatedAt
         _version
         _deleted
         _lastChangedAt
+        __typename
       }
       nextToken
       startedAt
+      __typename
     }
   }
 `;
@@ -349,19 +314,9 @@ export const getGrade = /* GraphQL */ `
       level
       name
       WordLists {
-        items {
-          id
-          name
-          seq
-          gradeID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
+        __typename
       }
       schoolID
       createdAt
@@ -369,6 +324,7 @@ export const getGrade = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
@@ -383,19 +339,17 @@ export const listGrades = /* GraphQL */ `
         id
         level
         name
-        WordLists {
-          nextToken
-          startedAt
-        }
         schoolID
         createdAt
         updatedAt
         _version
         _deleted
         _lastChangedAt
+        __typename
       }
       nextToken
       startedAt
+      __typename
     }
   }
 `;
@@ -416,19 +370,17 @@ export const syncGrades = /* GraphQL */ `
         id
         level
         name
-        WordLists {
-          nextToken
-          startedAt
-        }
         schoolID
         createdAt
         updatedAt
         _version
         _deleted
         _lastChangedAt
+        __typename
       }
       nextToken
       startedAt
+      __typename
     }
   }
 `;
@@ -438,25 +390,16 @@ export const getSchool = /* GraphQL */ `
       id
       name
       Grades {
-        items {
-          id
-          level
-          name
-          schoolID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
+        __typename
       }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
@@ -470,18 +413,16 @@ export const listSchools = /* GraphQL */ `
       items {
         id
         name
-        Grades {
-          nextToken
-          startedAt
-        }
         createdAt
         updatedAt
         _version
         _deleted
         _lastChangedAt
+        __typename
       }
       nextToken
       startedAt
+      __typename
     }
   }
 `;
@@ -501,18 +442,16 @@ export const syncSchools = /* GraphQL */ `
       items {
         id
         name
-        Grades {
-          nextToken
-          startedAt
-        }
         createdAt
         updatedAt
         _version
         _deleted
         _lastChangedAt
+        __typename
       }
       nextToken
       startedAt
+      __typename
     }
   }
 `;

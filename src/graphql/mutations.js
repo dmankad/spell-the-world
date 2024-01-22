@@ -18,6 +18,7 @@ export const createGuess = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
@@ -38,6 +39,7 @@ export const updateGuess = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
@@ -58,6 +60,7 @@ export const deleteGuess = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
@@ -72,27 +75,16 @@ export const createAttempt = /* GraphQL */ `
       dateStarted
       wordlistitemID
       Guesses {
-        items {
-          id
-          attemptID
-          dateGuessed
-          word
-          guess
-          user
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
+        __typename
       }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
@@ -107,27 +99,16 @@ export const updateAttempt = /* GraphQL */ `
       dateStarted
       wordlistitemID
       Guesses {
-        items {
-          id
-          attemptID
-          dateGuessed
-          word
-          guess
-          user
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
+        __typename
       }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
@@ -142,27 +123,16 @@ export const deleteAttempt = /* GraphQL */ `
       dateStarted
       wordlistitemID
       Guesses {
-        items {
-          id
-          attemptID
-          dateGuessed
-          word
-          guess
-          user
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
+        __typename
       }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
@@ -176,25 +146,16 @@ export const createWordListItem = /* GraphQL */ `
       word
       wordlistID
       Attempts {
-        items {
-          id
-          user
-          dateStarted
-          wordlistitemID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
+        __typename
       }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
@@ -208,25 +169,16 @@ export const updateWordListItem = /* GraphQL */ `
       word
       wordlistID
       Attempts {
-        items {
-          id
-          user
-          dateStarted
-          wordlistitemID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
+        __typename
       }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
@@ -240,25 +192,16 @@ export const deleteWordListItem = /* GraphQL */ `
       word
       wordlistID
       Attempts {
-        items {
-          id
-          user
-          dateStarted
-          wordlistitemID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
+        __typename
       }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
@@ -272,18 +215,9 @@ export const createWordList = /* GraphQL */ `
       name
       seq
       WordListItems {
-        items {
-          id
-          word
-          wordlistID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
+        __typename
       }
       gradeID
       createdAt
@@ -291,6 +225,7 @@ export const createWordList = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
@@ -304,18 +239,9 @@ export const updateWordList = /* GraphQL */ `
       name
       seq
       WordListItems {
-        items {
-          id
-          word
-          wordlistID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
+        __typename
       }
       gradeID
       createdAt
@@ -323,6 +249,7 @@ export const updateWordList = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
@@ -336,18 +263,9 @@ export const deleteWordList = /* GraphQL */ `
       name
       seq
       WordListItems {
-        items {
-          id
-          word
-          wordlistID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
+        __typename
       }
       gradeID
       createdAt
@@ -355,6 +273,7 @@ export const deleteWordList = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
@@ -368,19 +287,9 @@ export const createGrade = /* GraphQL */ `
       level
       name
       WordLists {
-        items {
-          id
-          name
-          seq
-          gradeID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
+        __typename
       }
       schoolID
       createdAt
@@ -388,6 +297,7 @@ export const createGrade = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
@@ -401,19 +311,9 @@ export const updateGrade = /* GraphQL */ `
       level
       name
       WordLists {
-        items {
-          id
-          name
-          seq
-          gradeID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
+        __typename
       }
       schoolID
       createdAt
@@ -421,6 +321,7 @@ export const updateGrade = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
@@ -434,19 +335,9 @@ export const deleteGrade = /* GraphQL */ `
       level
       name
       WordLists {
-        items {
-          id
-          name
-          seq
-          gradeID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
+        __typename
       }
       schoolID
       createdAt
@@ -454,6 +345,7 @@ export const deleteGrade = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
@@ -466,25 +358,16 @@ export const createSchool = /* GraphQL */ `
       id
       name
       Grades {
-        items {
-          id
-          level
-          name
-          schoolID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
+        __typename
       }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
@@ -497,25 +380,16 @@ export const updateSchool = /* GraphQL */ `
       id
       name
       Grades {
-        items {
-          id
-          level
-          name
-          schoolID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
+        __typename
       }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
@@ -528,25 +402,16 @@ export const deleteSchool = /* GraphQL */ `
       id
       name
       Grades {
-        items {
-          id
-          level
-          name
-          schoolID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
         nextToken
         startedAt
+        __typename
       }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
